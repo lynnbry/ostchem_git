@@ -43,41 +43,67 @@ This leads to the scaled system:
 
 \noindent let $m=s+e+x_1+x_2,$, then $$\dot{m}=d(s^0-m)-q_2(\sigma )x_1 f(s,e)- x_1 x_2 \sigma \leq d(s^0-m),$$ and hence $\lim_{\tau \rightarrow +\infty} \sup m(\tau) \leq s^0,$ implying that (\ref{scaleds})-(\ref{scaledf}) is dissipative. 
 
-\noindent First consider the case where $x_2=0$, that is, cheaters are not present. Then (\ref{scaleds})-(\ref{scaledf}) is transformed into the restricted system: 
-\begin{align}
-\dot{s}&=d(s^0-s)-x_1 f(s,e)\\
-\dot{e}&=q_1 x_1 f(s,e)-de\\
-\dot{x_1} &= x_1((1-q_1)f(s,e)-d)
-\end{align}
-
-\noindent Transforming the state of the system from $(s,e,x_1,x_2)$ to $(m,z_1,x_1,x_2)$ where $$m=s+e+x_1, \text{ and } z_1=(1-q_1)e-q_1 x_1,$$ the system is then transformed into: 
-\begin{align}
-\dot{m}&=d(s^0-m)\\
-\dot{z_1}&=-dz\\
-\dot{x_1} &= x_1((1-q_1)f(m-x_1-\frac{z_1+q_1 x_1}{1-q_1},\frac{z_1+q_1 x_1}{1-q_1})-d),
-\end{align}
-
-\noindent as $\tau \rightarrow +\infty$, $z_1(\tau ) \rightarrow 0$ and $m(\tau ) \rightarrow s^0$. The resulting scalar limiting system, obtained by setting $m=s^0$ and $z=0$ is given by: 
-\begin{align}
-\dot{x_1}=x_1((1-q_1)f(s^0- \frac{x_1}{1-q_1},\frac{q_1 x_1}{1-q_1})-d)
-\end{align}
-
-\pagebreak
-
-\noindent Now we consider the case where cheaters are present in the full scaled system (\ref{scaleds})-(\ref{scaledf}). Transforming the state of the system from $(s,e,x_1,x_2)$ to $(s,z_2,x_1,x_2)$ where $$z_2=(1-q_1-q_2(\sigma ))e-q_1x_1,$$ we see that the system is transformed into
+Transforming the state of the system from $(s,e,x_1,x_2)$ to $(s,z,x_1,x_2)$ where $$z=(1-q_1-q_2(\sigma ))e-q_1x_1,$$ we see that the system is transformed into
 \begin{align*}
 \dot{s}&=d(s^0-s)-(x_1+x_2)f(s,\frac{z_2+q_1 x_1}{1-q_1-q_2(\sigma )})\\
-\dot{z_2}&=-dz\\
+\dot{z}&=-dz\\
 \dot{x_1}&=x_1((1-q_1-q_2(\sigma ))f(s,{\frac{z_2+q_1 x_1}{1-q_1-q_2(\sigma )}})-d)\\
 \dot{x_2}&=x_2(f(s,{\frac{z_2+q_1 x_1}{1-q_1-q_2(\sigma )}})-d-x_1 \sigma)
 \end{align*}
 
-\noindent as $\tau \rightarrow \infty$, $z(\tau )\rightarrow 0$. Thus we let $z_2=0$ to obtain the scalar limiting system: 
+\noindent as $\tau \rightarrow \infty$, $z(\tau )\rightarrow 0$. Thus we let $z=0$ to obtain the scalar limiting system: 
 \begin{align}
-\dot{s}&=d(s^0-s)-(x_1+x_2)f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )})\\
+\dot{s}&=d(s^0-s)-(x_1+x_2)f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )}) \label{noes} \\
 \dot{x_1}&=x_1((1-q_1-q_2(\sigma ))f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )})-d)\\
-\dot{x_2}&=x_2(f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )})-d-x_1 \sigma)
+\dot{x_2}&=x_2(f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )})-d-x_1 \sigma)\label{noef}
 \end{align}
+
+\noindent First consider the case where $x_2=0$, that is, cheaters are not present. In this case, there is no ostracism occurring, thus by \textbf{N2}, $\sigma = q_2(\sigma ) =0$. Then (\ref{noes})-(\ref{noef}) is transformed into the system: 
+\begin{align}
+\dot{s}&=d(s^0-s)-x_1 f(s,\frac{q_1 x_1}{1-q_1})\\
+\dot{x_1} &= x_1((1-q_1)f(s,\frac{q_1 x_1}{1-q_1})-d)
+\end{align}
+
+\noindent Transforming the state of the system from $(s,x_1)$ to $(m,x_1)$ where $$m=(1-q_1)s+x_1,$$ the system is then transformed into: 
+\begin{align}
+\dot{m}&=-d(m-(1-q_1)s^0)\\
+\dot{x_1} &= x_1((1-q_1)f(\frac{m-x_1}{1-q_1},\frac{q_1 x_1}{1-q_1})-d),
+\end{align}
+
+\noindent from which it follows as $\tau \rightarrow +\infty$, $m(\tau ) \rightarrow (1-q_1)s^0$. Hence the dynamics are understood by considering the following system: 
+\begin{align*}
+\dot{x_1}=x_1((1-q_1)f(s^0- \frac{x_1}{1-q_1},\frac{q_1 x_1}{1-q_1})-d)
+\end{align*}
+or, written more compactly as 
+\begin{align}
+\dot{x_1}=x_1((1-q_1)h_1(x_1)-d), \label{x1only}
+\end{align}
+after defining the function: $$h_1(x_1)=f(s^0- \frac{x_1}{1-q_1},\frac{q_1 x_1}{1-q_1}), 0\leq x_1 \leq (1-q_1)s^0.$$
+
+\noindent Notice that \textbf{N1} implies that $h(0)=h_1((1-q_1)s^0)=0$, and that $h_1(x_1)>0$ when $0<x_1<(1-q_1)s^0$.
+
+\noindent Further assume \textbf{N3: } The function $h_1(x_1)$ is strictly concave down (i.e. $h''(x_1)<0$ for $0<x_1<(1-q_1)s^0$), and the equation $h(x_1)= d/ (1-q_1)$ has exactly two positive solutions $x_1^u$ and $x_1^s$ with $x_1^u<x_1^s$.
+
+\textbf{Lemma 1: } \textit{Assume that \textbf{N1, N2} and \textbf{N3} holds. Then equation (\ref{x1only}) has 3 steady states, $0, x_1^u$ and $x_1^s$. The steady states $0$ and $x_1^s$ are asymptotically stable, and $x_1^u$ is unstable.}
+
+\begin{proof}
+The linearization at a steady state of \ref{x1only} is given by: 
+\begin{align*}
+J=\bigg((1-q_1)[h_1(x_1)+x_1h_1'(x_1)]-d \bigg)
+\end{align*}
+The determinant of the Jacobian is simply the only entry, so $$\det{(J)}=(1-q_1)[h_1(x_1)+x_1h_1'(x_1)]-d.$$ 
+Calculating $\det{(J)}$ at each steady state reveals the stability of each. 
+
+\noindent For $x_1=0$, $\det{(J)}=-d<0$, thus, $x_1=0$ is stable. 
+
+\noindent Note that for $x_1^u$ and $x_1^s$, $h_1(x_1)=d/1-q_1$. Thus $\det{J}=(1-q_1)x_1h'(x_1^u)]$. For $x_1^u$, $h'(x_1^u)>0$, thus, $det{J}>0$ and must have a positive eigenvalue, implying that it is an unstable state. For $x_1^s$, $h'(x_1^s)<0$, and it is thus a stable point.  
+\end{proof}
+
+These boundary steady states are also steady states of the full system, thus, for $x_2=0$, we have the steady states of $(s,x_1,x_2)$ as $W=(0,0,0)$, $C_u=(s^u, x_1^u, 0)$ and $C_s=(s^s, x_1^s, 0)$. 
+
+\pagebreak
+
+\noindent Now we consider the case where cheaters are present in the full scaled system (\ref{noes})-(\ref{noef}). 
 
 \noindent To find the steady states we set $f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )})=d+x_1 \sigma = \frac{d}{1-q_1-q_2(\sigma )}$. This gives us $x_1^*=\frac{d}{\sigma}\frac{q_1+q_2}{1-q_1-q_2}$. 
 
