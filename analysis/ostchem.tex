@@ -45,6 +45,8 @@ This leads to the scaled system:
 
 \noindent let $m=s+e+x_1+x_2,$, then $$\dot{m}=d(s^0-m)-q_2(x_2 )x_1 f(s,e)- x_1 \sigma(q_2(x_2)) \leq d(s^0-m),$$ and hence $\lim_{\tau \rightarrow +\infty} \sup m(\tau) \leq s^0,$ implying that (\ref{scaleds})-(\ref{scaledf}) is dissipative.
 
+
+
 \noindent First consider the case where $x_2=0$, that is, cheaters are not present. In this case, there is no ostracism occurring, thus by \textbf{N2}, $q_2(x_2) =0$. Then (\ref{scaleds})-(\ref{scaledf}) is transformed into the system: 
 \begin{align}
 \dot{s}&=d(s^0-s)-(x_1) f(s,e) \label{nox2s}\\
@@ -65,7 +67,9 @@ This leads to the scaled system:
 \dot{x_1} &= x_1((1-q_1(e))f(s^0-e-x_1,e)-d) \label{ex2}
 \end{align}
 
-\noindent The steady states can be found by finding solutions to (\ref{ex1}) -(\ref{ex2}). 
+\noindent The steady states $\{e,x_1\}$ can be found by finding solutions to (\ref{ex1}) -(\ref{ex2}). 
+
+\noindent Note that when $x_1 =0$, $\dot{e}=-de -\rightarrow 0$, thus we get the washout stead state $W=\{0,0\}$.
 
 \noindent From (\ref{ex1}) -(\ref{ex2}), we get $$f(s^0-e-x_1,e)=\frac{d}{q_1(e)x_1}e = \frac{d}{1-q_1(e)}.$$ Solving this, we get $$x_1=\frac{1-q_1(e)}{q_1(e)}e.$$ Replacing $x_1$ in our system with this value gives us a function with just one parameter, $e$.
 
