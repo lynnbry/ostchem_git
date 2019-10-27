@@ -1,17 +1,17 @@
 \documentclass[12pt]{article}
 \usepackage{amsfonts, amsmath, amsthm, amssymb}
-\usepackage{fancyhdr, atbegshi, graphicx, subfig, float, versions}
+\usepackage{fancyhdr, atbegshi, graphicx, subfig, float, versions, verbatim}
 \linespread{1.6}
 \includeversion{quartic}
 
 \begin{document}
-Consider model with positive dilution rate D and positive input nutrient concentration $S^0$. Denote the nutrient, cooperator and cheater by $S, X_1,$ and $X_2$ respectively. The cooperator ostracizes the cheater at positive rate $\sigma$. Parameters $q_1, q_2(\sigma ) \in [0,1)$ represent the fractions of nutrient uptake that are used for public good production and cost of ostracism. Thus the remaining fraction $(1-q_1-q_2(\sigma ))$ is assumed positive and goes towards growth of the population. The per capita uptake rates of cooperator and cheater are assumed to be the same given by $\frac{F(S,E)}{\gamma}$, where $\gamma$ is the yield constant in the conversion of nutrient to new biomass. $\eta_E$ denote the efficiency of the conversion of nutrient to the public good. 
+Consider model with positive dilution rate D and positive input nutrient concentration $S^0$. Denote the nutrient, cooperator and cheater by $S, X_1,$ and $X_2$ respectively. The cooperator distributes its energy over three functions: $q_1(e)$ is the fraction of nutrient uptake allocated towards enzyme production which is dependent on the amount of enzyme available, $q_2$ is the fraction of nutrient uptake allocated to ostracism which depends on the quantity of cheaters present, and $q_3$ is the remaining nutrient uptake allocated towards growth. The parameters $q_1(e), q_2(X_2) \in [0,1)$ and $q_1+q_2+q_3=1$, that is, the sum of these functions is necessarily equal to all of the energy available. Thus, we can eliminate $q_3$ from the system, and represent the fraction of energy spent on growth as $1-q_1(e)-q_2(X_2),$ which is assumed to be positive. Ostracism will occur at positive rate  $\sigma(q_2)$. The per capita uptake rates of cooperator and cheater are assumed to be the same given by $\frac{F(S,E)}{\gamma}$, where $\gamma$ is the yield constant in the conversion of nutrient to new biomass. $\eta_E$ denote the efficiency of the conversion of nutrient to the public good. 
 \noindent This leads to the following model: 
 \begin{align}
 \dot{S}&=D(S^0-S)-\frac{1}{\gamma}F(S,E)(X_1 + X_2)\\
-\dot{E}&=\eta_E q_1 X_1 F(S,E)-DE\\
-\dot{X_1} &= X_1((1-q_1-q_2(\sigma ))F(S,E)-D)\\
-\dot{X_2}&=X_2(F(S,E)-D- X_1 \sigma)
+\dot{E}&=\eta_E q_1(E) X_1 F(S,E)-DE\\
+\dot{X_1} &= X_1((1-q_1(E)-q_2(X_2))F(S,E)-D)\\
+\dot{X_2}&=X_2(F(S,E)-D)- \sigma (q_2 (X_2) X_1
 \end{align}
 
 \noindent \textbf{N1:} assume the per capita uptake rate function $F(S,E)$ is non-negative and twice continuously differentiable and satisfies the following assumptions: 
@@ -23,62 +23,80 @@ Consider model with positive dilution rate D and positive input nutrient concent
 
 These assumptions imply there is no nutrient uptake when nutrient or public good are absent, that there is nutrient uptake when both are present, and that with increased levels of nutrient or public good there is also an increase in uptake rates. 
 
-\noindent \textbf{N2: }  assume the ostracism rate is non-negative, $\sigma \geq 0$, and that the cost of ostracism function $q_2(\sigma ) \in [0,1)$ is non-decreasing, that is, either constant or monotonically increasing. Additionally assume that it satisfies $q_2(0)=0$. 
+\noindent \textbf{N2: }  assume that the cost of ostracism function $q_2(X_2) \in [0,1)$ is non-decreasing, that is, either constant or monotonically increasing. Additionally assume that it satisfies $q_2(0)=0$. Assume further that the rate of ostracism, $\sigma(q_2(x_2))$ is monotonically increasing, that is, more energy spent on ostracism results in an increase in ostracism. Moreover, $\sigma(0)=0$. 
 
-These assumptions imply that there is a cost to ostracize only when then ostracism rate is positive, that is, only when ostracism is occurring. Additionally, that the cost to ostracize cheaters can not decrease with an increases ostracism rate.
+\noindent \textbf{N3: } Further assume that the fraction of nutrient uptake spent on producing enzyme is dependent upon the amount of enzyme present in the environment. That is, $q_1(e)$ will be a decreasing function and $q_1(0)>0$. 
+
+These assumptions imply that there is a cost to ostracize only when cheaters are present and that the ostracism rate is 0 when no cheaters are present. Additionally, that if the environment is saturated with nutrient, the cooperator will produce less of it and when there is a lack of enzyme present the cooperator will produce more of it. 
 
 \noindent We can then scale out the conversion factors $\gamma, \eta_E , \eta_T$ by setting $s=S, e=\frac{E}{\eta_E \gamma}, s^0=S^0, x_i=\frac{x_i}{\gamma}, d=D, f(s,e)=F(s,\eta_E \gamma e)$. 
 
 This leads to the scaled system: 
 \begin{align}
 \dot{s}&=d(s^0-s)-(x_1 + x_2) f(s,e) \label{scaleds}\\
-\dot{e}&=q_1 x_1 f(s,e)-de\\
-\dot{x_1} &= x_1((1-q_1-q_2(\sigma ))f(s,e)-d)\\
-\dot{x_2}&=x_2(f(s,e)-d-x_1 \sigma)\label{scaledf}
+\dot{e}&=q_1(e) x_1 f(s,e)-de\\
+\dot{x_1} &= x_1((1-q_1(e)-q_2(x_2))f(s,e)-d)\\
+\dot{x_2}&=x_2(f(s,e)-d)-x_1 \sigma(q_2(x_2))\label{scaledf}
 \end{align}
 
-\noindent Note that $f(s,e) \geq 0 \forall s\geq 0, e\geq 0.$ Additionally, $f(0,e)=f(s,0)=0 \forall s\geq 0, e\geq 0$ and $\frac{\partial f}{\partial s} \geq 0$ and $\frac{\partial f}{\partial e} \geq 0$.  
+\noindent Note that $f(s,e) \geq 0 \forall s \geq 0, e \geq 0.$ Additionally, $f(0,e)=f(s,0)=0 \forall s\geq 0, e\geq 0$ and $\frac{\partial f}{\partial s} \geq 0$ and $\frac{\partial f}{\partial e} \geq 0$.  
 
 \noindent This model is well-posed in the following sense that (\ref{scaleds})-(\ref{scaledf}) is dissipative.
 
-\noindent let $m=s+e+x_1+x_2,$, then $$\dot{m}=d(s^0-m)-q_2(\sigma )x_1 f(s,e)- x_1 x_2 \sigma \leq d(s^0-m),$$ and hence $\lim_{\tau \rightarrow +\infty} \sup m(\tau) \leq s^0,$ implying that (\ref{scaleds})-(\ref{scaledf}) is dissipative. 
+\noindent let $m=s+e+x_1+x_2,$, then $$\dot{m}=d(s^0-m)-q_2(x_2 )x_1 f(s,e)- x_1 \sigma(q_2(x_2)) \leq d(s^0-m),$$ and hence $\lim_{\tau \rightarrow +\infty} \sup m(\tau) \leq s^0,$ implying that (\ref{scaleds})-(\ref{scaledf}) is dissipative.
 
-Transforming the state of the system from $(s,e,x_1,x_2)$ to $(s,z,x_1,x_2)$ where $$z=(1-q_1-q_2(\sigma ))e-q_1x_1,$$ we see that the system is transformed into
+\noindent First consider the case where $x_2=0$, that is, cheaters are not present. In this case, there is no ostracism occurring, thus by \textbf{N2}, $q_2(x_2) =0$. Then (\ref{scaleds})-(\ref{scaledf}) is transformed into the system: 
+\begin{align}
+\dot{s}&=d(s^0-s)-(x_1) f(s,e) \label{nox2s}\\
+\dot{e}&=q_1(e) x_1 f(s,e)-de\\
+\dot{x_1} &= x_1((1-q_1(e))f(s,e)-d)\label{nox2f}
+\end{align}
+
+\noindent Transforming the state of the system from $(s,e,x_1)$ to $(m,e,x_1)$ where $$m=s+e+x_1,$$ the system is then transformed into: 
 \begin{align*}
-\dot{s}&=d(s^0-s)-(x_1+x_2)f(s,\frac{z_2+q_1 x_1}{1-q_1-q_2(\sigma )})\\
-\dot{z}&=-dz\\
-\dot{x_1}&=x_1((1-q_1-q_2(\sigma ))f(s,{\frac{z_2+q_1 x_1}{1-q_1-q_2(\sigma )}})-d)\\
-\dot{x_2}&=x_2(f(s,{\frac{z_2+q_1 x_1}{1-q_1-q_2(\sigma )}})-d-x_1 \sigma)
+\dot{m}&=d(s^0-m)\\
+\dot{e}&=q_1(e) x_1 f(m-e-x_1,e)-de\\
+\dot{x_1} &= x_1((1-q_1(e))f(m-e-x_1,e)-d),
 \end{align*}
 
-\noindent as $\tau \rightarrow \infty$, $z(\tau )\rightarrow 0$. Thus we let $z=0$ to obtain the scalar limiting system: 
+\noindent from which it follows as $\tau \rightarrow +\infty$, $m(\tau ) \rightarrow s^0$. Hence the dynamics are understood by considering the following system: 
 \begin{align}
-\dot{s}&=d(s^0-s)-(x_1+x_2)f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )}) \label{noes} \\
-\dot{x_1}&=x_1((1-q_1-q_2(\sigma ))f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )})-d)\\
-\dot{x_2}&=x_2(f(s,\frac{q_1 x_1}{1-q_1-q_2(\sigma )})-d-x_1 \sigma)\label{noef}
+\dot{e}&=q_1(e) x_1 f(s^0-e-x_1,e)-de\label{ex1} \\ 
+\dot{x_1} &= x_1((1-q_1(e))f(s^0-e-x_1,e)-d) \label{ex2}
 \end{align}
 
-\noindent First consider the case where $x_2=0$, that is, cheaters are not present. In this case, there is no ostracism occurring, thus by \textbf{N2}, $\sigma = q_2(\sigma ) =0$. Then (\ref{noes})-(\ref{noef}) is transformed into the system: 
+\noindent The steady states can be found by finding solutions to (\ref{ex1}) -(\ref{ex2}). 
+
+\noindent From (\ref{ex1}) -(\ref{ex2}), we get $$f(s^0-e-x_1,e)=\frac{d}{q_1(e)x_1}e = \frac{d}{1-q_1(e)}.$$ Solving this, we get $$x_1=\frac{1-q_1(e)}{q_1(e)}e.$$ Replacing $x_1$ in our system with this value gives us a function with just one parameter, $e$.
+
+\noindent Let $f(s^0-\frac{1}{q_1(e)}e,e) = h(e),$ and let $\frac{d}{1-q_1(e)} = k(e)$, then solutions to (\ref{ex1}) -(\ref{ex2}) will occur when $h(e)=k(e).$
+
+\noindent Since $\frac{e}{q_1(e)}$ is unbounded, increasing, and 0 when $e=0$, there exists some $e^0$ such that $\frac{e^0}{q_1(e^0)}=s^0.$ Thus, we only consider values of $e$ such that $0<\frac{e}{q_1(e)}<s^0.$
+
+\noindent Notice that \textbf{N1} implies that $h(0)=h(s^0)=0$ and that $h(e)>0$ when $0<\frac{e}{q_1(e)}<s^0.$
+
+\noindent \textbf{N4:} Further assume that the function $h(e)$ is strictly concave down (i.e. $h''(e)<0$ for $0<\frac{e}{q_1(e)}<s^0),$ and the equation $h(e)=\frac{d}{1-q_1(e)}$ has \textbf{two to ??} positive solutions. 
+
+\pagebreak
+
+\noindent Next, consider the case where $x_2 >0.$
+
+\noindent Let $h(x_2)=\sigma(q_2(x_2))$. 
+
+\noindent Let $\tilde{h}(x_2) = \frac{h(x_2)}{x_2}.$ Then the scaled system can be rewritten as: 
+
 \begin{align}
-\dot{s}&=d(s^0-s)-x_1 f(s,\frac{q_1 x_1}{1-q_1})\\
-\dot{x_1} &= x_1((1-q_1)f(s,\frac{q_1 x_1}{1-q_1})-d)
+\dot{s}&=d(s^0-s)-(x_1 + x_2) f(s,e) \label{tildes}\\
+\dot{e}&=q_1(e) x_1 f(s,e)-de\\
+\dot{x_1} &= x_1((1-q_1(e)-q_2(x_2))f(s,e)-d)\\
+\dot{x_2}&=x_2(f(s,e)-d-x_1 \tilde{h}(x_2))\label{tildef}
 \end{align}
 
-\noindent Transforming the state of the system from $(s,x_1)$ to $(m,x_1)$ where $$m=(1-q_1)s+x_1,$$ the system is then transformed into: 
-\begin{align}
-\dot{m}&=-d(m-(1-q_1)s^0)\\
-\dot{x_1} &= x_1((1-q_1)f(\frac{m-x_1}{1-q_1},\frac{q_1 x_1}{1-q_1})-d),
-\end{align}
 
-\noindent from which it follows as $\tau \rightarrow +\infty$, $m(\tau ) \rightarrow (1-q_1)s^0$. Hence the dynamics are understood by considering the following system: 
-\begin{align*}
-\dot{x_1}=x_1((1-q_1)f(s^0- \frac{x_1}{1-q_1},\frac{q_1 x_1}{1-q_1})-d)
-\end{align*}
-or, written more compactly as 
-\begin{align}
-\dot{x_1}=x_1((1-q_1)h_1(x_1)-d), \label{x1only}
-\end{align}
-after defining the function: $$h_1(x_1)=f(s^0- \frac{x_1}{1-q_1},\frac{q_1 x_1}{1-q_1}), 0\leq x_1 \leq (1-q_1)s^0.$$
+
+
+
+\begin{comment}
 
 \noindent Notice that \textbf{N1} implies that $h(0)=h_1((1-q_1)s^0)=0$, and that $h_1(x_1)>0$ when $0<x_1<(1-q_1)s^0$.
 
@@ -119,7 +137,7 @@ s &= s^0 - \frac{x_2+\frac{d}{\sigma}\big( \frac{q_1+q_2}{1-q_1-q_2(\sigma )} \b
 \end{align*}
 
 
-
+\end{comment}
 
 
 \end{document}
