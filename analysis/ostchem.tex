@@ -5,13 +5,14 @@
 \includeversion{quartic}
 
 \begin{document}
-Consider model with positive dilution rate D and positive input nutrient concentration $S^0$. Denote the nutrient, cooperator and cheater by $S, X_1,$ and $X_2$ respectively. The cooperator distributes its energy over three functions: $q_1(e)$ is the fraction of nutrient uptake allocated towards enzyme production which is dependent on the amount of enzyme available, $q_2$ is the fraction of nutrient uptake allocated to ostracism which depends on the quantity of cheaters present, and $q_3$ is the remaining nutrient uptake allocated towards growth. The parameters $q_1(e), q_2(X_2) \in [0,1)$ and $q_1+q_2+q_3=1$, that is, the sum of these functions is necessarily equal to all of the energy available. Thus, we can eliminate $q_3$ from the system, and represent the fraction of energy spent on growth as $1-q_1(e)-q_2(X_2),$ which is assumed to be positive. Ostracism will occur at positive rate  $\sigma(q_2)$. The per capita uptake rates of cooperator and cheater are assumed to be the same given by $\frac{F(S,E)}{\gamma}$, where $\gamma$ is the yield constant in the conversion of nutrient to new biomass. $\eta_E$ denote the efficiency of the conversion of nutrient to the public good. 
+Consider model with positive dilution rate D and positive input nutrient concentration $S^0$. Denote the nutrient, cooperator and cheater by $S, X_1,$ and $X_2$ respectively. The cooperator distributes its energy over three functions: $q_1(e)$ is the fraction of nutrient uptake allocated towards enzyme production which is dependent on the amount of enzyme available, $q_2$ is the fraction of nutrient uptake allocated to ostracism which depends on the quantity of cheaters present, and $q_3$ is the remaining nutrient uptake allocated towards growth. The parameters $q_1(e), q_2(X_2) \in [0,1)$ and $q_1+q_2+q_3=1$, that is, the sum of these functions is necessarily equal to all of the energy available. Thus, we can eliminate $q_3$ from the system, and represent the fraction of energy spent on growth as $1-q_1(e)-q_2(X_2),$ which is assumed to be positive. Ostracism will occur at positive rate  $\Sigma(q_2)$. The per capita uptake rates of cooperator and cheater are assumed to be the same given by $\frac{F(S,E)}{\gamma}$, where $\gamma$ is the yield constant in the conversion of nutrient to new biomass. $\eta_E$ denote the efficiency of the conversion of nutrient to the public good. 
+
 \noindent This leads to the following model: 
 \begin{align}
 \dot{S}&=D(S^0-S)-\frac{1}{\gamma}F(S,E)(X_1 + X_2)\\
 \dot{E}&=\eta_E q_1(E) X_1 F(S,E)-DE\\
 \dot{X_1} &= X_1((1-q_1(E)-q_2(X_2))F(S,E)-D)\\
-\dot{X_2}&=X_2(F(S,E)-D)- \sigma (q_2 (X_2) X_1
+\dot{X_2}&=X_2(F(S,E)-D)- \Sigma (q_2 (X_2)) X_1)
 \end{align}
 
 \noindent \textbf{N1:} assume the per capita uptake rate function $F(S,E)$ is non-negative and twice continuously differentiable and satisfies the following assumptions: 
@@ -31,12 +32,14 @@ These assumptions imply that there is a cost to ostracize only when cheaters are
 
 \noindent We can then scale out the conversion factors $\gamma, \eta_E , \eta_T$ by setting $s=S, e=\frac{E}{\eta_E \gamma}, s^0=S^0, x_i=\frac{x_i}{\gamma}, d=D, f(s,e)=F(s,\eta_E \gamma e)$. 
 
+\noindent We can also set $\sigma(q_2(x_2))= \frac{\Sigma}{X_2}(q_2(x_2))$
+
 This leads to the scaled system: 
 \begin{align}
 \dot{s}&=d(s^0-s)-(x_1 + x_2) f(s,e) \label{scaleds}\\
 \dot{e}&=q_1(e) x_1 f(s,e)-de\\
 \dot{x_1} &= x_1((1-q_1(e)-q_2(x_2))f(s,e)-d)\\
-\dot{x_2}&=x_2(f(s,e)-d)-x_1 \sigma(q_2(x_2))\label{scaledf}
+\dot{x_2}&=x_2(f(s,e)-d-x_1 \sigma(q_2(x_2)))\label{scaledf}
 \end{align}
 
 \noindent Note that $f(s,e) \geq 0 \forall s \geq 0, e \geq 0.$ Additionally, $f(0,e)=f(s,0)=0 \forall s\geq 0, e\geq 0$ and $\frac{\partial f}{\partial s} \geq 0$ and $\frac{\partial f}{\partial e} \geq 0$.  
@@ -45,7 +48,7 @@ This leads to the scaled system:
 
 \noindent let $m=s+e+x_1+x_2,$, then $$\dot{m}=d(s^0-m)-q_2(x_2 )x_1 f(s,e)- x_1 \sigma(q_2(x_2)) \leq d(s^0-m),$$ and hence $\lim_{\tau \rightarrow +\infty} \sup m(\tau) \leq s^0,$ implying that (\ref{scaleds})-(\ref{scaledf}) is dissipative.
 
-
+\section{Case 1: Cooperators Only}
 
 \noindent First consider the case where $x_2=0$, that is, cheaters are not present. In this case, there is no ostracism occurring, thus by \textbf{N2}, $q_2(x_2) =0$. Then (\ref{scaleds})-(\ref{scaledf}) is transformed into the system: 
 \begin{align}
@@ -54,7 +57,7 @@ This leads to the scaled system:
 \dot{x_1} &= x_1((1-q_1(e))f(s,e)-d)\label{nox2f}
 \end{align}
 
-\noindent Transforming the state of the system from $(s,e,x_1)$ to $(m,e,x_1)$ where $$m=s+e+x_1,$$ the system is then transformed into: 
+\noindent Transforming the state of the system from $(s,e,x_1)$ to $(m,e,x_1)$ where $$m=s+e+x_1,$$ we get: 
 \begin{align*}
 \dot{m}&=d(s^0-m)\\
 \dot{e}&=q_1(e) x_1 f(m-e-x_1,e)-de\\
@@ -67,7 +70,7 @@ This leads to the scaled system:
 \dot{x_1} &= x_1((1-q_1(e))f(s^0-e-x_1,e)-d) \label{ex2}
 \end{align}
 
-\noindent The steady states $\{e,x_1\}$ can be found by finding solutions to (\ref{ex1}) -(\ref{ex2}). 
+\noindent The steady states, which will be represented of the form $\{e,x_1\}$, can be found by finding solutions to (\ref{ex1}) -(\ref{ex2}). 
 
 \noindent Note that when $x_1 =0$, $\dot{e}=-de -\rightarrow 0$, thus we get the washout stead state $W=\{0,0\}$.
 
@@ -77,9 +80,41 @@ This leads to the scaled system:
 
 \noindent Since $\frac{e}{q_1(e)}$ is unbounded, increasing, and 0 when $e=0$, there exists some $e^0$ such that $\frac{e^0}{q_1(e^0)}=s^0.$ Thus, we only consider values of $e$ such that $0<\frac{e}{q_1(e)}<s^0.$
 
-\noindent Notice that \textbf{N1} implies that $h(0)=h(s^0)=0$ and that $h(e)>0$ when $0<\frac{e}{q_1(e)}<s^0.$
+\noindent Notice that \textbf{N1} implies that $h(0)=h(s^0)=0$ and that $h(e)>0$ when $0<e<q_1(e)s^0.$
 
-\noindent \textbf{N4:} Further assume that the function $h(e)$ is strictly concave down (i.e. $h''(e)<0$ for $0<\frac{e}{q_1(e)}<s^0),$ and the equation $h(e)=\frac{d}{1-q_1(e)}$ has \textbf{two to ??} positive solutions. 
+\noindent When the function $h(e)$ is strictly concave down (i.e. $h''(e)<0$ for $0<e<q_1(e)s^0),$ and the equation $k(e)=\frac{d}{1-q_1(e)}$ is sufficiently small, then there will be two positive solutions. 
+
+\noindent Note that functions of the form $f(s,e)$ can be rewritten as a product of a function of $s$ and $e$ respectively, i.e., $f(s,e)=f_1(s)f_2(e)$. Then $f(s,e)=h(e)=f_1(s^0-\frac{e}{q_1(e)})f_2(e)$. 
+
+\noindent For $h''(e)<0$, it is necessary and sufficient that $g''(e)=\frac{-e}{q_1(e)}<0$. 
+
+\noindent Some examples of functions which satisfy this condition are: 
+
+\noindent 1) $q_1(E)=e^{-E}$ and thus $g(E)=-Ee^{E}$. Here, $g''(E)=-2e^E-Ee^E<0$. 
+
+\noindent 2) $q_1(E)=\frac{1}{1+E^2}$. Then $g(E)=\frac{-E}{q+E^2}$ and $g''(E)=\frac{-2E^3+6E}{(E^2+1)^3}<0$.
+
+\noindent \textbf{N3} Assume $g''(e)<0$ and $k(e)=\frac{d}{1-q_1(e)}$ is sufficiently small. Then it follows, $h''(e)<0$. Thus, there are two positive solutions $e^*$ and $e^{**}$, where $0<e^*<e^{**}<q_1(e)s^0$, such that $h(e)=k(e)$. 
+
+\noindent Thus (\ref{ex1})-(\ref{ex2}) has three steady states. $W=\{0,0,0,0\}, R^*=\{e^*,\frac{1-q_1(e^*)}{q_1(e^*)}e^*\},\\ R^{**}=\{e^{**},\frac{1-q_1(e^{**})}{q_1(e^{**})}e^{**}\}.$
+
+\noindent Next we will determine stability of $R^*$ and $R^{**}$. The linearization of system (\ref{ex1})-(\ref{ex2}) is given by: 
+\[ 
+J=
+\begin{bmatrix}
+ x_1 \frac{d q_1(e)}{de} f + x_1 q_1(e) \frac{\partial f}{\partial e} -d  & q_1(e) f  \\
+x_1 ((1-q_1(e))\frac{\partial f}{\partial e} - f\frac{d q_1(e)}{d e}) & (1-q_1(e))f -d \\
+
+\end{bmatrix}
+\]
+
+where the argument $(s,e)$ is suppressed on $f(s,e)$ to ease notation. 
+
+\noindent Considering the 
+
+\begin{comment}
+
+\noindent 
 
 \pagebreak
 
@@ -96,11 +131,6 @@ This leads to the scaled system:
 \dot{x_2}&=x_2(f(s,e)-d-x_1 \tilde{h}(x_2))\label{tildef}
 \end{align}
 
-
-
-
-
-\begin{comment}
 
 \noindent Notice that \textbf{N1} implies that $h(0)=h_1((1-q_1)s^0)=0$, and that $h_1(x_1)>0$ when $0<x_1<(1-q_1)s^0$.
 
@@ -123,7 +153,7 @@ Calculating $\det{(J)}$ at each steady state reveals the stability of each.
 
 These boundary steady states are also steady states of the full system, thus, for $x_2=0$, we have the steady states of $(s,x_1,x_2)$ as $W=(0,0,0)$, $C_u=(s^u, x_1^u, 0)$ and $C_s=(s^s, x_1^s, 0)$. 
 
-\pagebreak
+
 
 \noindent Now we consider the case where cheaters are present in the full scaled system (\ref{noes})-(\ref{noef}). 
 
@@ -140,6 +170,16 @@ x_1&= \frac{d}{\sigma} \big( \frac{q_1+q_2(\sigma )}{1-q_1-q_2(\sigma )}\big) \\
 s &= s^0 - \frac{x_2+\frac{d}{\sigma}\big( \frac{q_1+q_2}{1-q_1-q_2(\sigma )} \big)}{1-q_1-q_2(\sigma )}
 \end{align*}
 
+\[ 
+\tiny
+J=
+\begin{bmatrix}
+-d -(x_1+x_2) \frac{\partial f}{\partial s}& -(x_1+x_2)\frac{\partial f}{\partial e} & -f & -f \\
+q_1(e)x_1\frac{\partial f}{\partial s} & x_1 \frac{d q_1(e)}{de} f + x_1 q_1(e) \frac{\partial f}{\partial e} -d + x_1 & q_1(e) f & 0 \\
+x_1(1-q_1(e)-q_2(x_2))\frac{\partial f}{\partial s} & x_1 \frac{\partial f}{\partial e}(1-q_2(x_2))-\frac{d q_1(e)}{d e}-q_1(e)) & (1-q_1(e)-q_2(x_2))f -d & -x_1 f \frac{d q_2(x_2)}{d x_2} \\
+x_2 \frac{\partial f}{\partial s} & x_2 \frac{\partial f}{\partial e} & 0 & f-d-\sigma(q_2(x_2))-x_2\frac{d \sigma(q_2(x_2))}{dx_2}
+\end{bmatrix}
+\]
 
 \end{comment}
 
